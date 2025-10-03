@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//private/var/folders/**)",
+      "WebSearch",
+      "Bash(python3:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
