@@ -3,7 +3,14 @@
     "allow": [
       "Read(//private/var/folders/**)",
       "WebSearch",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "mcp__puppeteer__puppeteer_navigate",
+      "Bash(curl:*)",
+      "Bash(lsof:*)",
+      "mcp__puppeteer__puppeteer_screenshot",
+      "mcp__puppeteer__puppeteer_evaluate",
+      "Read(//Users/matanca@melio.com/.config/**)",
+      "Read(//Users/matanca@melio.com/**)"
     ],
     "deny": [],
     "ask": []
