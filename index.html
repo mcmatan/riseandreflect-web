@@ -579,7 +579,37 @@
         /* Conversation Section */
         .conversation-section {
             padding: 7rem 2rem;
-            background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
+            background: linear-gradient(135deg, #FFF5E6 0%, #F3E5F5 50%, #E8F5E9 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 20s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conversation-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 149, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: particle-float 15s ease-in-out infinite;
+        }
+
+        .conversation-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(155, 89, 182, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: particle-float 18s ease-in-out infinite reverse;
         }
 
         .conversation-section h2 {
@@ -589,6 +619,8 @@
             color: #1a1a1a;
             font-weight: 700;
             letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
         }
 
         .conversation-section > p {
@@ -599,11 +631,15 @@
             margin: 0 auto 5rem;
             line-height: 1.8;
             font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
 
         .conversation-container {
             max-width: 750px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .conversation-exchange {
@@ -615,36 +651,60 @@
 
         .message-bubble {
             padding: 1.25rem 1.5rem;
-            border-radius: 20px;
+            border-radius: 24px;
             max-width: 80%;
             line-height: 1.7;
             font-size: 1.05rem;
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
 
         .message-bubble:hover {
-            transform: scale(1.01);
+            transform: scale(1.02) translateY(-2px);
         }
 
         .ai-message {
-            background: linear-gradient(135deg, rgba(255, 149, 0, 0.95) 0%, rgba(155, 89, 182, 0.95) 100%);
+            background: linear-gradient(135deg, #D67A10 0%, #B05548 50%, #7A3E95 100%);
             color: white;
             align-self: flex-start;
-            box-shadow: 0 2px 12px rgba(255, 149, 0, 0.15);
-            font-weight: 450;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(255, 149, 0, 0.3);
+            font-weight: 600;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .ai-message:hover {
+            box-shadow: 0 8px 30px rgba(255, 149, 0, 0.4);
+        }
+
+        .ai-message::before {
+            content: '✨';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .ai-message:hover::before {
+            opacity: 1;
         }
 
         .user-message {
-            background: #F3F4F6;
+            background: white;
             color: #1F2937;
             align-self: flex-end;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            border: 1px solid #E5E7EB;
+            box-shadow: 0 2px 12px rgba(155, 89, 182, 0.15);
+            border: 2px solid #E8D5F2;
             flex-direction: row-reverse;
+        }
+
+        .user-message:hover {
+            box-shadow: 0 4px 20px rgba(155, 89, 182, 0.25);
+            border-color: #D4B5E8;
         }
 
         .voice-indicator {
@@ -656,9 +716,10 @@
 
         .sound-wave {
             width: 3px;
-            background: rgba(255, 255, 255, 0.8);
+            background: linear-gradient(180deg, #FFE082 0%, #FFFFFF 100%);
             border-radius: 2px;
             animation: wave 1s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(255, 224, 130, 0.6);
         }
 
         .sound-wave:nth-child(1) {
@@ -679,9 +740,11 @@
         @keyframes wave {
             0%, 100% {
                 transform: scaleY(1);
+                opacity: 0.8;
             }
             50% {
                 transform: scaleY(0.5);
+                opacity: 1;
             }
         }
 
@@ -695,19 +758,48 @@
             max-width: 800px;
             margin: 5rem auto 0;
             padding: 3rem 2.5rem;
-            background: white;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F5 100%);
             border-radius: 28px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-            border: 1px solid #F3F4F6;
+            box-shadow: 0 8px 32px rgba(255, 149, 0, 0.12), 0 2px 8px rgba(155, 89, 182, 0.08);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .goals-extracted::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 28px;
+            padding: 2px;
+            background: linear-gradient(135deg, #FF9500 0%, #9B59B6 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.3;
         }
 
         .goals-extracted h3 {
             font-size: 1.75rem;
             margin-bottom: 2.5rem;
-            color: #1a1a1a;
-            font-weight: 600;
+            background: linear-gradient(135deg, #FF9500 0%, #9B59B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
             text-align: center;
             letter-spacing: -0.01em;
+            position: relative;
+        }
+
+        .goals-extracted h3::before {
+            content: '🎯';
+            margin-right: 0.5rem;
+            background: none;
+            -webkit-text-fill-color: initial;
         }
 
         .goals-grid {
@@ -718,30 +810,30 @@
 
         .goal-card {
             padding: 2rem;
-            background: #FAFAFA;
+            background: white;
             border-radius: 20px;
-            border-top: 3px solid transparent;
-            border-image: linear-gradient(90deg, #FF9500 0%, #9B59B6 100%);
-            border-image-slice: 1 0 0 0;
+            border: 2px solid #F0E6F6;
+            position: relative;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .goal-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-            background: white;
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(155, 89, 182, 0.15);
+            border-color: #D4B5E8;
         }
 
         .goal-type {
             display: inline-block;
-            padding: 0.4rem 1rem;
-            background: linear-gradient(135deg, rgba(255, 149, 0, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
-            color: #9B59B6;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, #FF9500 0%, #9B59B6 100%);
+            color: white;
             border-radius: 24px;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1.25rem;
             letter-spacing: 0.02em;
+            box-shadow: 0 2px 8px rgba(155, 89, 182, 0.2);
         }
 
         .goal-card h4 {
@@ -1050,8 +1142,9 @@
 
     <!-- Conversation Example -->
     <section class="conversation-section reveal">
-        <h2>Your Reflection Companion</h2>
-        <p>See how a typical conversation helps you discover your own solutions through guided reflection</p>
+        <h2>We Ask, Then Remember</h2>
+        <p style="font-size: 1.25rem; font-weight: 500; color: #1a1a1a; margin-bottom: 1rem;">Through clarifying questions, we help you arrive at your own insights—then remember them for next time</p>
+        <p>See how a conversation guides you to discover what matters most</p>
 
         <div class="conversation-container">
             <div class="conversation-exchange">
@@ -1127,8 +1220,8 @@
                     <div class="goal-card">
                         <span class="goal-type">Self-Improvement</span>
                         <h4>Remember my 'why' when facing future challenges</h4>
-                        <div class="goal-detail"><strong>Pattern identified:</strong> User finds strength by reconnecting with their original purpose</div>
-                        <div class="goal-detail"><strong>AI will remember:</strong> Next time you feel like giving up, I'll remind you of this launch - how perseverance and staying connected to your 'why' helped you succeed</div>
+                        <div class="goal-detail"><strong>Pattern identified:</strong> You find strength by reconnecting with your original purpose</div>
+                        <div class="goal-detail" style="background: linear-gradient(135deg, #FFF5E6 0%, #F3E5F5 100%); padding: 1rem; border-radius: 12px; margin-top: 1rem; border-left: 3px solid #9B59B6;"><strong>💡 We remember:</strong> Next time you feel like giving up, we'll remind you of this launch—how perseverance and staying connected to your 'why' helped you succeed</div>
                     </div>
                 </div>
             </div>
