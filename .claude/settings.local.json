@@ -10,7 +10,9 @@
       "mcp__puppeteer__puppeteer_screenshot",
       "mcp__puppeteer__puppeteer_evaluate",
       "Read(//Users/matanca@melio.com/.config/**)",
-      "Read(//Users/matanca@melio.com/**)"
+      "Read(//Users/matanca@melio.com/**)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
