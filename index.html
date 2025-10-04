@@ -398,6 +398,194 @@
             transform: translateY(-5px);
         }
 
+        /* Conversation Section */
+        .conversation-section {
+            padding: 7rem 2rem;
+            background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
+        }
+
+        .conversation-section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .conversation-section > p {
+            text-align: center;
+            font-size: 1.15rem;
+            color: #6B7280;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .conversation-container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .conversation-exchange {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .message-bubble {
+            padding: 1.25rem 1.5rem;
+            border-radius: 20px;
+            max-width: 80%;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .message-bubble:hover {
+            transform: scale(1.01);
+        }
+
+        .ai-message {
+            background: linear-gradient(135deg, rgba(255, 149, 0, 0.95) 0%, rgba(155, 89, 182, 0.95) 100%);
+            color: white;
+            align-self: flex-start;
+            box-shadow: 0 2px 12px rgba(255, 149, 0, 0.15);
+            font-weight: 450;
+            backdrop-filter: blur(10px);
+        }
+
+        .user-message {
+            background: #F3F4F6;
+            color: #1F2937;
+            align-self: flex-end;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E5E7EB;
+            flex-direction: row-reverse;
+        }
+
+        .voice-indicator {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .sound-wave {
+            width: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        .sound-wave:nth-child(1) {
+            height: 12px;
+            animation-delay: 0s;
+        }
+
+        .sound-wave:nth-child(2) {
+            height: 16px;
+            animation-delay: 0.2s;
+        }
+
+        .sound-wave:nth-child(3) {
+            height: 10px;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: scaleY(1);
+            }
+            50% {
+                transform: scaleY(0.5);
+            }
+        }
+
+        .mic-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.5;
+        }
+
+        .goals-extracted {
+            max-width: 800px;
+            margin: 5rem auto 0;
+            padding: 3rem 2.5rem;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #F3F4F6;
+        }
+
+        .goals-extracted h3 {
+            font-size: 1.75rem;
+            margin-bottom: 2.5rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .goal-card {
+            padding: 2rem;
+            background: #FAFAFA;
+            border-radius: 20px;
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(90deg, #FF9500 0%, #9B59B6 100%);
+            border-image-slice: 1 0 0 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .goal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            background: white;
+        }
+
+        .goal-type {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, rgba(255, 149, 0, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+            color: #9B59B6;
+            border-radius: 24px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+        }
+
+        .goal-card h4 {
+            font-size: 1.15rem;
+            margin-bottom: 1.25rem;
+            color: #1F2937;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .goal-detail {
+            font-size: 0.95rem;
+            color: #6B7280;
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .goal-detail strong {
+            color: #374151;
+            font-weight: 500;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -427,6 +615,30 @@
             .screenshots-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .conversation-section h2 {
+                font-size: 2rem;
+            }
+
+            .message-bubble {
+                max-width: 92%;
+                font-size: 1rem;
+                padding: 1.125rem 1.375rem;
+            }
+
+            .goals-extracted {
+                padding: 2rem 1.5rem;
+                margin: 3rem auto 0;
+            }
+
+            .goals-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .goal-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -599,6 +811,93 @@
                 <div class="step-content">
                     <h3>Track Your Growth Weekly</h3>
                     <p>Weekly aggregated insights reveal long-term patterns in emotional intelligence, problem-solving, and self-compassion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conversation Example -->
+    <section class="conversation-section">
+        <h2>Your Reflection Companion</h2>
+        <p>See how a typical conversation helps you discover your own solutions through guided reflection</p>
+
+        <div class="conversation-container">
+            <div class="conversation-exchange">
+                <div class="message-bubble ai-message">
+                    <div class="voice-indicator">
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                    </div>
+                    <span>How are you feeling this morning?</span>
+                </div>
+                <div class="message-bubble user-message">
+                    <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                    <span>Really excited!</span>
+                </div>
+            </div>
+
+            <div class="conversation-exchange">
+                <div class="message-bubble ai-message">
+                    <div class="voice-indicator">
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                    </div>
+                    <span>What's got you excited?</span>
+                </div>
+                <div class="message-bubble user-message">
+                    <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                    <span>I'm finally launching that side project I've been working on for months.</span>
+                </div>
+            </div>
+
+            <div class="conversation-exchange">
+                <div class="message-bubble ai-message">
+                    <div class="voice-indicator">
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                    </div>
+                    <span>That's amazing! What feels most rewarding about reaching this point?</span>
+                </div>
+                <div class="message-bubble user-message">
+                    <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                    <span>Honestly, that I didn't give up. There were so many moments I wanted to quit, but I kept going.</span>
+                </div>
+            </div>
+
+            <div class="conversation-exchange">
+                <div class="message-bubble ai-message">
+                    <div class="voice-indicator">
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                        <div class="sound-wave"></div>
+                    </div>
+                    <span>What helped you push through those moments?</span>
+                </div>
+                <div class="message-bubble user-message">
+                    <svg class="mic-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+                    <span>Remembering why I started. And my partner - they believed in me even when I didn't believe in myself.</span>
+                </div>
+            </div>
+
+            <div class="goals-extracted">
+                <h3>Goals Identified</h3>
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <span class="goal-type">Gratitude</span>
+                        <h4>Thank my partner for their support</h4>
+                        <div class="goal-detail"><strong>Timeline:</strong> Today</div>
+                        <div class="goal-detail"><strong>Next action:</strong> Express appreciation for believing in me during difficult moments</div>
+                    </div>
+
+                    <div class="goal-card">
+                        <span class="goal-type">Self-Improvement</span>
+                        <h4>Remember my 'why' when facing future challenges</h4>
+                        <div class="goal-detail"><strong>Pattern identified:</strong> User finds strength by reconnecting with their original purpose</div>
+                        <div class="goal-detail"><strong>AI will remember:</strong> Next time you feel like giving up, I'll remind you of this launch - how perseverance and staying connected to your 'why' helped you succeed</div>
+                    </div>
                 </div>
             </div>
         </div>
