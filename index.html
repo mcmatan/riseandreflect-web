@@ -75,12 +75,15 @@
         /* Hero Section */
         .hero {
             padding: 6rem 2rem 5rem;
-            background: linear-gradient(180deg, #FFD89B 0%, #fff 100%);
+            background: linear-gradient(135deg, #FFD89B 0%, #FFECB3 25%, #E1BEE7 75%, #CE93D8 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             text-align: center;
             position: relative;
             z-index: 1;
             margin-top: 0;
             padding-top: calc(90px + 6rem);
+            overflow: hidden;
         }
 
         .hero h1 {
@@ -327,6 +330,57 @@
             animation: float 3s ease-in-out infinite;
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: translateY(-30px) translateX(15px) scale(1.1);
+                opacity: 0.25;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 149, 0, 0.2), rgba(155, 89, 182, 0.15));
+            pointer-events: none;
+            animation: particle-float 12s ease-in-out infinite;
+            filter: blur(40px);
+        }
+
         .session-card {
             background: white;
             padding: 2.5rem;
@@ -396,6 +450,130 @@
 
         .app-screenshot:hover {
             transform: translateY(-5px);
+        }
+
+        /* iPhone Mockup */
+        .iphone-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .iphone-mockup:hover {
+            transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .iphone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #1a1a1a;
+            border-radius: 0 0 20px 20px;
+            z-index: 2;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .iphone-screen img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #FF9500 50%, transparent 100%);
+            margin: 0 auto;
+            opacity: 0.3;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 3rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF9500 0%, #9B59B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Sticky CTA Mobile */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1999;
+            border-top: 2px solid transparent;
+            border-image: linear-gradient(90deg, #FF9500 0%, #9B59B6 100%);
+            border-image-slice: 1 0 0 0;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .sticky-cta-button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #FF9500 0%, #9B59B6 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+        }
+
+        .sticky-cta-button:active {
+            transform: scale(0.98);
         }
 
         /* Conversation Section */
@@ -640,6 +818,14 @@
             .goal-card {
                 padding: 1.5rem;
             }
+
+            .sticky-cta {
+                display: block;
+            }
+
+            .particle {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -656,16 +842,44 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="floating-icon" style="width: 140px; margin: 0 auto 2rem;">
-            <img src="images/login-charicter.png" alt="Mindful character" style="width: 100%; height: auto; display: block;">
+        <!-- Floating Particles -->
+        <div class="particle" style="width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 60px; height: 60px; top: 20%; right: 15%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 100px; height: 100px; bottom: 15%; left: 15%; animation-delay: 4s;"></div>
+        <div class="particle" style="width: 70px; height: 70px; bottom: 20%; right: 10%; animation-delay: 6s;"></div>
+
+        <div style="position: relative; z-index: 2;">
+            <div class="floating-icon" style="width: 140px; margin: 0 auto 2rem;">
+                <img src="images/login-charicter.png" alt="Mindful character" style="width: 100%; height: auto; display: block;">
+            </div>
+            <h1>Daily Voice Journaling<br/>for Mindful Living</h1>
+            <p>Start your day with intention. End it with reflection. Have natural voice conversations with AI that help you process thoughts, track growth, and discover patterns in your journey.</p>
+            <a href="#subscribe" class="cta-button">Get Early Access</a>
         </div>
-        <h1>Daily Voice Journaling<br/>for Mindful Living</h1>
-        <p>Start your day with intention. End it with reflection. Have natural voice conversations with AI that help you process thoughts, track growth, and discover patterns in your journey.</p>
-        <a href="#subscribe" class="cta-button">Get Early Access</a>
     </section>
 
+    <!-- Social Proof Section -->
+    <section class="social-proof reveal">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">5 min</div>
+                <div class="stat-label">Quick Daily Sessions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Private & Secure</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2x</div>
+                <div class="stat-label">Morning & Evening</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <!-- Morning & Evening Section -->
-    <section style="padding: 7rem 2rem; background: linear-gradient(135deg, rgba(255, 149, 0, 0.05) 0%, rgba(155, 89, 182, 0.05) 100%);">
+    <section class="reveal" style="padding: 7rem 2rem; background: linear-gradient(135deg, rgba(255, 149, 0, 0.05) 0%, rgba(155, 89, 182, 0.05) 100%);">
         <div style="max-width: 1000px; margin: 0 auto;">
             <h2 style="font-size: 2.8rem; margin-bottom: 2rem; color: #1a1a1a; font-weight: 800; text-align: center;">Morning & Evening Sessions</h2>
             <p style="text-align: center; font-size: 1.15rem; color: #555; max-width: 700px; margin: 0 auto 4.5rem; line-height: 1.7;">One session in the morning to set intentions. One in the evening to reflect. Each just 5 minutes of natural conversation with AI.</p>
@@ -688,8 +902,10 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- Features -->
-    <section class="features">
+    <section class="features reveal">
         <h2>Powered by AI. Guided by You.</h2>
         <div class="features-grid">
             <div class="feature-card">
@@ -738,34 +954,46 @@
     </section>
 
     <!-- Screenshots Section -->
-    <section style="padding: 7rem 2rem; background: #fff;">
+    <section class="reveal" style="padding: 7rem 2rem; background: #fff;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="font-size: 3rem; text-align: center; margin-bottom: 5rem; color: #1a1a1a; font-weight: 800;">See It In Action</h2>
             <div class="screenshots-container">
                 <div class="screenshot-item">
-                    <img src="images/screenshot-1.png" alt="Morning journal home screen" class="app-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div style="display: none; max-width: 300px; margin: 0 auto; padding: 3rem 2rem; background: linear-gradient(135deg, #FFD89B 0%, #FF9500 100%); border-radius: 40px; color: white;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">🌅</div>
-                        <div style="font-weight: 600;">Morning Journal</div>
-                        <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">Start your day with intention</div>
+                    <div class="iphone-mockup">
+                        <div class="iphone-screen">
+                            <img src="images/screenshot-1.png" alt="Morning journal home screen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 3rem 2rem; background: linear-gradient(135deg, #FFD89B 0%, #FF9500 100%); color: white; text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">🌅</div>
+                                <div style="font-weight: 600;">Morning Journal</div>
+                                <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">Start your day with intention</div>
+                            </div>
+                        </div>
                     </div>
                     <p style="text-align: center; margin-top: 1.5rem; color: #555; font-size: 1.05rem; font-weight: 500;">Start your morning with intention</p>
                 </div>
                 <div class="screenshot-item">
-                    <img src="images/screenshot-2.png" alt="AI insights screen" class="app-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div style="display: none; max-width: 300px; margin: 0 auto; padding: 3rem 2rem; background: linear-gradient(135deg, #9B59B6 0%, #7B3FA0 100%); border-radius: 40px; color: white;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
-                        <div style="font-weight: 600;">Weekly Insights</div>
-                        <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">Track patterns in your reflections</div>
+                    <div class="iphone-mockup">
+                        <div class="iphone-screen">
+                            <img src="images/screenshot-2.png" alt="AI insights screen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 3rem 2rem; background: linear-gradient(135deg, #9B59B6 0%, #7B3FA0 100%); color: white; text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                                <div style="font-weight: 600;">Weekly Insights</div>
+                                <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">Track patterns in your reflections</div>
+                            </div>
+                        </div>
                     </div>
                     <p style="text-align: center; margin-top: 1.5rem; color: #555; font-size: 1.05rem; font-weight: 500;">Natural voice conversations</p>
                 </div>
                 <div class="screenshot-item">
-                    <img src="images/screenshot-3.png" alt="Voice conversation screen" class="app-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div style="display: none; max-width: 300px; margin: 0 auto; padding: 3rem 2rem; background: linear-gradient(135deg, #FF9500 0%, #9B59B6 100%); border-radius: 40px; color: white;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎤</div>
-                        <div style="font-weight: 600;">Voice Reflection</div>
-                        <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">Natural conversations with AI</div>
+                    <div class="iphone-mockup">
+                        <div class="iphone-screen">
+                            <img src="images/screenshot-3.png" alt="Voice conversation screen" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 3rem 2rem; background: linear-gradient(135deg, #FF9500 0%, #9B59B6 100%); color: white; text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">🎤</div>
+                                <div style="font-weight: 600;">Voice Reflection</div>
+                                <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">Natural conversations with AI</div>
+                            </div>
+                        </div>
                     </div>
                     <p style="text-align: center; margin-top: 1.5rem; color: #555; font-size: 1.05rem; font-weight: 500;">Track patterns and growth</p>
                 </div>
@@ -773,8 +1001,10 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- How It Works -->
-    <section class="how-it-works">
+    <section class="how-it-works reveal">
         <h2>Simple Daily Practice</h2>
         <div class="steps">
             <div class="step">
@@ -816,8 +1046,10 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- Conversation Example -->
-    <section class="conversation-section">
+    <section class="conversation-section reveal">
         <h2>Your Reflection Companion</h2>
         <p>See how a typical conversation helps you discover your own solutions through guided reflection</p>
 
@@ -900,8 +1132,15 @@
                     </div>
                 </div>
             </div>
+
+            <!-- CTA in Conversation Section -->
+            <div style="text-align: center; margin-top: 4rem;">
+                <a href="#subscribe" class="cta-button">Start Your Journey</a>
+            </div>
         </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- Subscribe Section -->
     <section class="subscribe" id="subscribe">
@@ -924,6 +1163,11 @@
             </a>
         </div>
     </section>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta" id="stickyCTA">
+        <a href="#subscribe" class="sticky-cta-button">Get Early Access</a>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -962,6 +1206,53 @@
                     });
                 }
             });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with .reveal class
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Sticky CTA visibility
+        const stickyCTA = document.getElementById('stickyCTA');
+        const subscribeSection = document.getElementById('subscribe');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', function() {
+            const currentScrollY = window.scrollY;
+
+            // Only show on mobile (handled by CSS, but we control visibility based on scroll)
+            if (window.innerWidth <= 768) {
+                // Hide sticky CTA when subscribe section is visible
+                const subscribeRect = subscribeSection.getBoundingClientRect();
+                const isSubscribeVisible = subscribeRect.top < window.innerHeight && subscribeRect.bottom > 0;
+
+                if (isSubscribeVisible || currentScrollY < 300) {
+                    stickyCTA.style.transform = 'translateY(100%)';
+                } else if (currentScrollY < lastScrollY) {
+                    // Scrolling up
+                    stickyCTA.style.transform = 'translateY(0)';
+                } else {
+                    // Scrolling down
+                    stickyCTA.style.transform = 'translateY(100%)';
+                }
+            }
+
+            lastScrollY = currentScrollY;
         });
     </script>
 </body>
