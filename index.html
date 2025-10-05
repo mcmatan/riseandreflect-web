@@ -924,6 +924,24 @@
             .particle {
                 display: none;
             }
+
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 4rem;
+                padding-top: calc(70px + 5rem);
+            }
+
+            .features, .how-it-works, .subscribe, .app-store, .conversation-section {
+                padding: 5rem 1.5rem;
+            }
+
+            /* Who This Is For - Mobile Grid Fix */
+            section > div > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
