@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://matanca@melio.com.github.io/rise-reflect-landing/sitemap.xml
+Sitemap: https://www.riseandreflect.net/sitemap.xml
