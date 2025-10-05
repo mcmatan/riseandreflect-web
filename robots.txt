@@ -1,0 +1,6 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://matanca@melio.com.github.io/rise-reflect-landing/sitemap.xml

@@ -12,7 +12,10 @@
       "Read(//Users/matanca@melio.com/.config/**)",
       "Read(//Users/matanca@melio.com/**)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(grep:*)",
+      "Bash(wget:*)",
+      "Bash(sips:*)"
     ],
     "deny": [],
     "ask": []
