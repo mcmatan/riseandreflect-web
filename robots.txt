@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.riseandreflect.net/sitemap.xml
+Sitemap: https://riseandreflect.net/sitemap.xml
