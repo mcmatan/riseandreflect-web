@@ -15,7 +15,8 @@
       "Bash(git commit:*)",
       "Bash(grep:*)",
       "Bash(wget:*)",
-      "Bash(sips:*)"
+      "Bash(sips:*)",
+      "Bash(afplay:*)"
     ],
     "deny": [],
     "ask": []
